@@ -1,16 +1,16 @@
 # BehindtheO
 
-An exclusive behind-the-scenes content platform for Ohio State University athletics. Built with React Native and Expo, BehindtheO lets fans discover authentic content from OSU athletes across all 35 athletic programs.
+An exclusive behind-the-scenes content platform for Ohio State University athletics. Built with React Native and Expo, BehindtheO lets fans discover authentic content from OSU athletes across all 36 athletic programs.
 
 ---
 
 ## Features
 
 - **Feed** — A personalized stream of athlete posts with photos, captions, and likes
-- **Explore** — Browse content filtered by sport across all OSU athletic programs
+- **Explore** — Browse content filtered by sport across all 36 OSU athletic programs
 - **Saved** — Bookmark favorite content for later (backend integration ready)
 - **Like system** — Toggle likes on individual posts
-- **Sport filtering** — Filter explore feed by any of 35 OSU sports
+- **Sport filtering** — Filter explore feed by any of 36 OSU sports
 
 ---
 
@@ -43,7 +43,7 @@ BehindtheO/
 │   └── SportBadge.tsx       # Sport pill badge
 ├── constants/
 │   ├── colors.ts            # OSU brand colors
-│   └── sports.ts            # 35 OSU sports with metadata
+│   └── sports.ts            # 36 OSU sports with metadata
 ├── lib/
 │   └── supabase.ts          # Supabase client
 ├── global.css               # Tailwind directives

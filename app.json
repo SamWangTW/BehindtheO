@@ -2,6 +2,7 @@
   "expo": {
     "name": "BehindtheO",
     "slug": "BehindtheO",
+    "scheme": "behindtheo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -23,6 +23,7 @@ An exclusive behind-the-scenes content platform for Ohio State University athlet
 | Language | TypeScript 5.9.2 (strict mode) |
 | Styling | NativeWind 2.x + Tailwind CSS 3.3.2 |
 | Backend | Supabase (auth + database) |
+| Media Storage | Cloudinary (photos + videos) |
 | Storage | AsyncStorage (session persistence) |
 
 ---
@@ -45,7 +46,8 @@ BehindtheO/
 │   ├── colors.ts            # OSU brand colors
 │   └── sports.ts            # 36 OSU sports with metadata
 ├── lib/
-│   └── supabase.ts          # Supabase client
+│   ├── supabase.ts          # Supabase client
+│   └── cloudinary.ts        # Cloudinary client (photos + videos)
 ├── global.css               # Tailwind directives
 ├── tailwind.config.js       # Custom OSU theme colors
 ├── babel.config.js          # Babel + NativeWind plugin
@@ -72,11 +74,15 @@ npm install
 
 ### Environment Variables
 
-Create a `.env` file in the root with your Supabase credentials:
+Create a `.env` file in the root with your credentials:
 
 ```env
 EXPO_PUBLIC_SUPABASE_URL=your_supabase_project_url
 EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+EXPO_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+EXPO_PUBLIC_CLOUDINARY_API_KEY=your_api_key
+EXPO_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 ```
 
 ### Running the App
@@ -118,3 +124,16 @@ The Supabase client in [lib/supabase.ts](lib/supabase.ts) is configured with:
 - Ready for real-time subscriptions, auth, and database queries
 
 The current feed and explore screens use mock data that can be swapped out for live Supabase queries.
+
+---
+
+## Cloudinary Setup
+
+Cloudinary is used for hosting all athlete photos and videos. Media URLs are stored in Supabase and served via Cloudinary's CDN.
+
+To set up:
+1. Create a free [Cloudinary](https://cloudinary.com) account
+2. Create an **unsigned upload preset** in your Cloudinary dashboard (Settings → Upload → Upload Presets)
+3. Add your credentials to `.env` (see Environment Variables above)
+
+Media is uploaded directly from the client using the unsigned preset, keeping the API secret off the device.

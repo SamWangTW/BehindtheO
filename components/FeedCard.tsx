@@ -31,7 +31,7 @@ export default function FeedCard({ item }: Props) {
     .slice(0, 2);
 
   return (
-    <View className="bg-white mx-4 my-2 rounded-2xl overflow-hidden shadow-sm">
+    <View style={{ backgroundColor: '#000000', borderBottomWidth: 0.5, borderBottomColor: '#222222' }}>
       {/* Header */}
       <View className="flex-row items-center px-4 pt-4 pb-3">
         {/* Avatar */}
@@ -40,7 +40,7 @@ export default function FeedCard({ item }: Props) {
         </View>
         {/* Name + badge */}
         <View className="flex-1">
-          <Text className="font-semibold text-gray-900 text-sm">{item.athleteName}</Text>
+          <Text className="font-semibold text-sm" style={{ color: '#FFFFFF' }}>{item.athleteName}</Text>
           <View className="mt-0.5">
             <SportBadge sport={item.sport} />
           </View>
@@ -48,20 +48,20 @@ export default function FeedCard({ item }: Props) {
       </View>
 
       {/* Thumbnail placeholder */}
-      <View className="h-52 bg-osu-light-gray items-center justify-center">
+      <View className="h-52 items-center justify-center" style={{ backgroundColor: '#111111' }}>
         <Text style={{ fontSize: 40 }}>{item.sport.emoji}</Text>
       </View>
 
       {/* Footer */}
       <View className="px-4 py-3">
-        <Text className="text-gray-800 text-sm leading-5 mb-3">{item.caption}</Text>
+        <Text className="text-sm leading-5 mb-3" style={{ color: '#FFFFFF' }}>{item.caption}</Text>
         <TouchableOpacity
           onPress={handleLike}
           className="flex-row items-center"
           activeOpacity={0.7}
         >
           <Text style={{ fontSize: 18 }}>{liked ? '❤️' : '🤍'}</Text>
-          <Text className={`ml-1.5 text-sm font-medium ${liked ? 'text-scarlet' : 'text-osu-gray'}`}>
+          <Text className="ml-1.5 text-sm font-medium" style={{ color: liked ? '#BB0000' : '#888888' }}>
             {likeCount.toLocaleString()}
           </Text>
         </TouchableOpacity>

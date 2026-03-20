@@ -52,17 +52,16 @@ const MOCK_FEED: FeedItem[] = [
 
 export default function FeedScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-osu-light-gray" edges={['bottom']}>
+    <SafeAreaView className="flex-1 bg-black" edges={['bottom']}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingTop: 8, paddingBottom: 24 }}
       >
         {MOCK_FEED.map((item) => (
           <FeedCard key={item.id} item={item} />
         ))}
 
         <View className="items-center mt-4">
-          <Text className="text-osu-gray text-xs">You're all caught up ✓</Text>
+          <Text style={{ color: '#555555' }} className="text-xs">You're all caught up ✓</Text>
         </View>
       </ScrollView>
     </SafeAreaView>

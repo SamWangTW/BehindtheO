@@ -1,38 +1,70 @@
 import { Tabs } from 'expo-router';
-import { Colors } from '@/constants/colors';
+import Svg, { Circle, Line, Polygon, Rect, Path } from 'react-native-svg';
+
+function BehindIcon({ color }: { color: string }) {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Circle cx={12} cy={12} r={9} stroke={color} strokeWidth={2} />
+      <Polygon points="10,8.5 10,15.5 16,12" fill={color} />
+    </Svg>
+  );
+}
+
+function ExploreIcon({ color }: { color: string }) {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Circle cx={10} cy={10} r={6} stroke={color} strokeWidth={2} />
+      <Line x1={14.5} y1={14.5} x2={20} y2={20} stroke={color} strokeWidth={2} strokeLinecap="round" />
+    </Svg>
+  );
+}
+
+function SavedIcon({ color }: { color: string }) {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" fill="none">
+      <Path
+        d="M5 3 H19 V21 L12 16 L5 21 Z"
+        stroke={color}
+        strokeWidth={2}
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </Svg>
+  );
+}
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.scarlet,
-        tabBarInactiveTintColor: Colors.osuGray,
+        tabBarActiveTintColor: '#BB0000',
+        tabBarInactiveTintColor: '#888888',
         tabBarStyle: {
-          backgroundColor: Colors.white,
-          borderTopColor: '#E5E5E5',
+          backgroundColor: '#111111',
+          borderTopWidth: 0,
+          elevation: 0,
         },
-        headerStyle: { backgroundColor: Colors.scarlet },
-        headerTintColor: Colors.white,
+        tabBarLabelStyle: {
+          fontSize: 11,
+        },
+        headerStyle: { backgroundColor: '#BB0000' },
+        headerTintColor: '#FFFFFF',
         headerTitleStyle: { fontWeight: '700' },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Feed',
-          tabBarIcon: ({ color }) => (
-            <TabIcon emoji="📱" color={color} />
-          ),
-          headerTitle: 'BehindtheO',
+          title: 'Behind',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <BehindIcon color={color} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => (
-            <TabIcon emoji="🔍" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <ExploreIcon color={color} />,
           headerTitle: 'Explore Sports',
         }}
       />
@@ -40,17 +72,10 @@ export default function TabLayout() {
         name="saved"
         options={{
           title: 'Saved',
-          tabBarIcon: ({ color }) => (
-            <TabIcon emoji="🔖" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <SavedIcon color={color} />,
           headerTitle: 'Saved',
         }}
       />
     </Tabs>
   );
-}
-
-function TabIcon({ emoji, color }: { emoji: string; color: string }) {
-  const { Text } = require('react-native');
-  return <Text style={{ fontSize: 20, opacity: color === Colors.scarlet ? 1 : 0.5 }}>{emoji}</Text>;
 }

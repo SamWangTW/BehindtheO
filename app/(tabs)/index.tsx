@@ -52,7 +52,18 @@ const MOCK_FEED: FeedItem[] = [
 
 export default function FeedScreen() {
   return (
-    <SafeAreaView className="flex-1 bg-black" edges={['bottom']}>
+    <SafeAreaView className="flex-1 bg-black" edges={['top', 'bottom']}>
+      <View style={{
+        backgroundColor: '#000000',
+        paddingVertical: 12,
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#222222',
+      }}>
+        <Text style={{ textAlign: 'center' }}>
+          <Text style={{ color: '#FFFFFF', fontSize: 22, fontWeight: '800', fontStyle: 'italic', letterSpacing: 1 }}>Behindthe</Text>
+          <Text style={{ color: '#BB0000', fontSize: 22, fontWeight: '800', fontStyle: 'italic', letterSpacing: 1 }}>O</Text>
+        </Text>
+      </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
       >
